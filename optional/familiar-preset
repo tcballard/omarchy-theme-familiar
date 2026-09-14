@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# Optional layout preset. Theme installation is a separate operation.
+set -euo pipefail
+umask 077
+base=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+config="$HOME/.config/omarchy/shell.json"
+state="${XDG_STATE_HOME:-$HOME/.local/state}/familiar-preset"
+plugin="$HOME/.config/omarchy/plugins/local.familiar-tasks"
+defaults="${OMARCHY_PATH:-/usr/share/omarchy}/config/omarchy/shell.json"
+die() { echo "Familiar: $*" >&2; exit 1; }
+for cmd in jq cmp mktemp; do command -v "$cmd" >/dev/null || die "Missing $cmd"; done
+[[ ! -L $config ]] || die "shell.json is a symlink; use a regular file before applying this preset."
+source_config="$config"
+[[ -e $config ]] || source_config="$defaults"
+[[ -f $source_config ]] || die "Cannot find Quattro shell.json. Set OMARCHY_PATH to your Omarchy installation."
+jq -e '.version == 1 and (.bar|type)=="object" and (.bar.layout.left|type)=="array" and (.bar.layout.center|type)=="array" and (.bar.layout.right|type)=="array"' "$source_config" >/dev/null || die "Unsupported shell configuration."
+mode=${1:-plan}
+if [[ $mode == plan ]]; then
+  echo 'Proposed layout (read-only): bottom bar; menu and windows left; clock and system controls right.' >&2
+  jq -S -f "$base/preset.jq" "$source_config"
+  exit 0
+fi
+[[ $mode == apply || $mode == restore ]] || die 'Usage: familiar-preset [plan|apply|restore]'
+command -v flock >/dev/null || die 'Missing flock'
+command -v omarchy-shell >/dev/null || die 'Quattro shell command is unavailable'
+[[ $(omarchy-shell shell ping) == ok ]] || die 'Start the Omarchy shell before changing the layout'
+mkdir -p "$state"
+exec 9>"$state/lock"
+flock -n 9 || die 'Another Familiar operation is running'
+scratch=$(mktemp -d "$state/work.XXXXXX")
+trap 'rm -rf -- "$scratch"' EXIT
+cp -- "$source_config" "$scratch/current"
+write_config() {
+  mkdir -p "$(dirname "$config")"
+  local tmp
+  tmp=$(mktemp "$(dirname "$config")/.familiar.XXXXXX")
+  cat -- "$1" >"$tmp"
+  mv -- "$tmp" "$config"
+}
+if [[ $mode == apply ]]; then
+  [[ ! -e $state/before.json ]] || die 'An existing snapshot is present; restore it before reapplying'
+  [[ ! -L $plugin ]] || die 'Familiar Tasks is a symlink; preserve it before applying'
+  if [[ -e $plugin ]]; then
+    cmp -s "$base/omarchy-familiar-tasks/Widget.qml" "$plugin/Widget.qml" && cmp -s "$base/omarchy-familiar-tasks/manifest.json" "$plugin/manifest.json" || die 'Existing Familiar Tasks differs; preserve it before applying'
+  fi
+  jq -e '[(.disabledPlugins // [])[] | select(. == "omarchy.menu")] | length == 0' "$source_config" >/dev/null || die 'The built-in menu is disabled; enable it before applying'
+  jq -S -f "$base/preset.jq" "$source_config" >"$scratch/after"
+  # Record durable recovery data before changing the shell.
+  cp -- "$scratch/current" "$state/before.json"
+  cp -- "$scratch/after" "$state/applied.json"
+  if [[ -e $config ]]; then echo present >"$state/original"; else echo absent >"$state/original"; fi
+  mkdir -p "$(dirname "$plugin")"
+  if [[ ! -e $plugin ]]; then cp -R -- "$base/omarchy-familiar-tasks" "$plugin"; fi
+  cmp -s "$source_config" "$scratch/current" || die 'Configuration changed during preparation; snapshot retained, no layout written'
+  [[ $source_config == "$config" || ! -e $config ]] || die 'A user configuration appeared during preparation; no layout written'
+  write_config "$scratch/after"
+  if ! omarchy-shell shell rescanPlugins >/dev/null || [[ $(omarchy-shell shell reloadConfig) != ok ]]; then
+    die 'Shell reload failed. Snapshot retained; run familiar-preset restore after the shell recovers.'
+  fi
+  echo 'Familiar layout applied. Run familiar-preset restore to undo it.'
+else
+  [[ -f $state/before.json && -f $state/applied.json ]] || die 'No Familiar snapshot exists'
+  # Preserve edits outside the bar. Never overwrite later bar customization.
+  jq -S '.bar' "$scratch/current" >"$scratch/bar-current"
+  jq -S '.bar' "$state/applied.json" >"$scratch/bar-applied"
+  jq -S '.bar' "$state/before.json" >"$scratch/bar-before"
+  if ! cmp -s "$scratch/bar-current" "$scratch/bar-applied" && ! cmp -s "$scratch/bar-current" "$scratch/bar-before"; then
+    die "Bar changed since application; snapshot is at $state/before.json. Merge it manually to preserve your changes."
+  fi
+  jq -S --slurpfile previous "$state/before.json" '.bar = $previous[0].bar' "$scratch/current" >"$scratch/restored"
+  cmp -s "$source_config" "$scratch/current" || die 'Configuration changed during restore; nothing written'
+  write_config "$scratch/restored"
+  [[ $(omarchy-shell shell reloadConfig) == ok ]] || die 'Restore written but shell reload failed; retry restore when the shell is available'
+  # Keep the disabled plugin files for inspection; no recursive deletion.
+  mv -- "$state/before.json" "$state/restored-before.json"
+  mv -- "$state/applied.json" "$state/restored-applied.json"
+  echo 'Previous bar restored. Other shell settings preserved. Familiar Tasks files remain installed but inactive.'
+fi

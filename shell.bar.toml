@@ -1,0 +1,9 @@
+# Complete Quattro section; recheck on upstream changes.
+[bar]
+background = "#202226"
+background-alpha = 1.0
+text = "#ffffff"
+active = "#ffb4a9"
+scale-with-font = false
+size-horizontal = 42
+size-vertical = 42

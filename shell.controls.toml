@@ -1,0 +1,24 @@
+# Complete Quattro section; recheck on upstream changes.
+[controls]
+normal-color = "#202124"
+normal-fill-alpha = 0.04
+normal-border = "#202124"
+normal-border-width = 1
+normal-border-alpha = 0.4
+hover-cursor-color = "#202124"
+hover-cursor-fill-alpha = 0.08
+hover-cursor-border = "#202124"
+hover-cursor-border-width = 1
+hover-cursor-border-alpha = 0.25
+focus-color = "#202124"
+focus-fill-alpha = 0.08
+focus-border = "#0067b8"
+focus-border-width = 2
+focus-border-alpha = 1.0
+selected-color = "#202124"
+selected-fill-alpha = 0.08
+selected-border = "#0067b8"
+selected-border-width = 2
+selected-border-alpha = 1.0
+pressed-fill-alpha = 0.22
+selection-fill-alpha = 0.35

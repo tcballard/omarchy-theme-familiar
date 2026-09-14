@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "local.familiar-tasks",
+  "name": "Familiar Tasks",
+  "version": "0.1.0",
+  "author": "Tom Ballard",
+  "description": "Open-window buttons for the Familiar desktop preset.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Widget.qml"
+  },
+  "barWidget": {
+    "displayName": "Open windows",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "left"
+  }
+}

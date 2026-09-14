@@ -1,9 +1,5 @@
 # Artwork provenance
 
-backgrounds/familiar-blue.png was generated with OpenAI's built-in image generation tool on 14 September 2026 for this task. No external source artwork was supplied. It is an original abstract blue ribbon composition, not Microsoft's wallpaper or logo. The image shown in the conversation is the wallpaper, not a rendered desktop.
-
-Prompt: polished original landscape desktop wallpaper for Familiar; calm Windows-10-inspired blue atmosphere without Microsoft or Windows logos, no four-pane symbol, no text; deep navy left, medium blue right, one luminous folded translucent blue ribbon on the right, broad quiet space, restrained lighting, no stars or UI.
-
 Palette refined from the Build Omarchy Themes starter. Shell configuration uses the upstream Omarchy template's supported section keys. This is a development preview; release licensing and registry submission remain outstanding.
 
 ## Distinct wallpaper collection

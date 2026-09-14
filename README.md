@@ -1,5 +1,11 @@
 # Familiar
 
+<p>
+  <a href="https://github.com/tcballard/omarchy-badges"><img alt="Built for Omarchy: Theme" height="20" src="https://raw.githubusercontent.com/tcballard/omarchy-badges/75975e5b5bf75e7ede3764bcd2950046f7abfe2c/badges/v1/omarchy-theme.svg"></a>
+  <img alt="Target: Omarchy Quattro" height="20" src="https://img.shields.io/badge/target-Omarchy_Quattro-536b4e?style=flat-square">
+  <img alt="Status: development preview" height="20" src="https://img.shields.io/badge/status-development_preview-8a6500?style=flat-square">
+</p>
+
 A Windows-inspired light theme for Omarchy Quattro: clean application surfaces, a charcoal bar, blue selections and four original wallpapers with the official Omarchy logo.
 
 ![Wallpaper collection — not a live desktop screenshot](docs/wallpapers.jpg)
@@ -7,6 +13,8 @@ A Windows-inspired light theme for Omarchy Quattro: clean application surfaces, 
 Clockwise from top left: Blue Bloom, Pearl Silk, Aurora Tides and Violet Orbit. These change the wallpaper; the application palette remains the Familiar light theme.
 
 ## Install
+
+**Tested installed Omarchy version: none yet.** Quattro is the source target, not a verified installed-version compatibility claim. The category badge is a community label, not certification.
 
 Development preview targeting Quattro. Record your current theme and background before installation:
 
@@ -39,7 +47,7 @@ This is not a Windows shell replacement: there are no added title-bar buttons, p
 
 ## Status
 
-Built against Quattro commit b679363bed05415771a1b1dc92c6899a908236f7. Palette/TOML checks, all 19 upstream template-generation checks and isolated preset/widget checks passed. Live desktop, display scaling, compositor activation and registry validation remain unverified. See [validation evidence](docs/VALIDATION.md).
+Built against Quattro commit b679363bed05415771a1b1dc92c6899a908236f7. The correction audit reproduced TOML parsing, text contrast, all 19 retained upstream template-generation checks, all five section overrides, image decoding and isolated preset checks. The earlier Rust-helper and mocked-QML checks were not rerun in this audit. Live desktop, display scaling, compositor activation and registry validation remain unverified. See [validation evidence](docs/VALIDATION.md).
 
 Five complete shell-section overrides customise bar, font, controls, launcher and menu; revisit these when upstream adds section settings. Other applications derive colours through Omarchy's templates. User templates may take precedence.
 

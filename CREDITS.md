@@ -12,3 +12,7 @@ Palette refined from the Build Omarchy Themes starter. Shell configuration uses 
 Original artwork generated with OpenAI image generation on 14 September 2026. No Microsoft wallpaper files are included. Every wallpaper carries the same 144px white logo composited from the official Omarchy SVG, without generative redrawing: https://omarchy.org/brand/omarchy-logo.svg (repository blob aa239e1f0402c3b22be01c9484f4eecedad2935e).
 
 All four PNGs decode at 1672 × 941 pixels. The contact sheet shows wallpaper artwork, not a live desktop. Application theme colours remain the Familiar light palette; these are wallpaper variants, not four separate application themes.
+
+## Appearance inspiration
+
+The optional rounded corners and soft window shadows, and the theme's consistent spacing, were informed by [Adam Perlis's Marvin theme](https://github.com/adamperlis/omarchy-marvin), which credits Marvin Schwaibold's design work. Familiar uses its own values and implementation; no Marvin widgets, fonts or wallpaper assets are bundled.

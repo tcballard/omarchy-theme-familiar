@@ -3,6 +3,9 @@
 set -euo pipefail
 umask 077
 base=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+if [[ ${1:-} == appearance ]]; then
+  exec python3 "$base/appearance.py" "${@:2}"
+fi
 config="$HOME/.config/omarchy/shell.json"
 state="${XDG_STATE_HOME:-$HOME/.local/state}/familiar-preset"
 plugin="$HOME/.config/omarchy/plugins/local.familiar-tasks"

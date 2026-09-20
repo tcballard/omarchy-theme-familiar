@@ -1,0 +1,29 @@
+# Quattro section override. Geometry is pinned; display scaling remains compositor-owned.
+[spacing]
+scale = 1.0
+scale-with-font = true
+xxs = 2
+xs = 4
+sm = 4
+md = 8
+lg = 8
+xl = 12
+xxl = 16
+xxxl = 20
+huge = 24
+control-gap = 8
+control-padding-x = 12
+control-padding-y = 8
+input-padding-y = 8
+control-height = 36
+popup-row-height = 36
+row-gap = 8
+row-padding-x = 12
+label-gap = 4
+panel-gap = 16
+panel-padding = 16
+popup-padding = 16
+dropdown-width = 240
+searchable-dropdown-width = 260
+number-field-width = 120
+searchable-popup-min-height = 264

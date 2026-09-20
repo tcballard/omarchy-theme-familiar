@@ -49,7 +49,7 @@ This is not a Windows shell replacement: there are no added title-bar buttons, p
 
 The theme adds consistent 4/8px spacing, 36px control rows and quieter menu/control outlines. Blue selections and keyboard-focus indicators remain distinct.
 
-An independent part of the optional preset adds **3px window borders, 12px rounded corners, gentle window shadows, 8px inner gaps and 16px outer gaps**. Familiar uses a solid blue active-window border and a muted grey inactive border, making focus clear even on the light wallpapers. Quattro's shared shell surfaces follow Hyprland's corner radius. You can use this with or without the bottom-bar layout:
+An independent part of the optional preset adds **5px window borders, 12px rounded corners, gentle window shadows, 8px inner gaps and 16px outer gaps**. Familiar uses a solid blue active-window border and a muted grey inactive border, making focus clear even on the light wallpapers. Quattro's shared shell surfaces follow Hyprland's corner radius. You can use this with or without the bottom-bar layout:
 
 ```sh
 bash optional/familiar-preset appearance plan

@@ -4,7 +4,7 @@ This pass adopts a restrained version of Marvin's rounded, softly raised surface
 
 ## Implementation boundary
 
-Focus refinement: the appearance preset now explicitly sets a 3px window border. Theme palette keys `hyprland_active_border` and `hyprland_inactive_border` select opaque Familiar blue (`#0067b8`) and muted grey (`#aeb7c2`). Quattro's generated Hyprland template uses these for ordinary and grouped windows. Previously applied appearance presets must be restored and reapplied to receive the width change. Border colours follow the selected theme; the width remains part of the optional preset.
+Focus refinement: the appearance preset now explicitly sets a 5px window border. Theme palette keys `hyprland_active_border` and `hyprland_inactive_border` select opaque Familiar blue (`#0067b8`) and muted grey (`#aeb7c2`). Quattro's generated Hyprland template uses these for ordinary and grouped windows. Previously applied appearance presets must be restored and reapplied to receive the width change. Border colours follow the selected theme; the width remains part of the optional preset.
 
 `shell.spacing.toml` and the existing menu, launcher and control sections contain theme-owned settings. `optional/familiar-appearance.lua` contains compositor geometry. `familiar-preset appearance` manages that file separately from the existing bar preset. Theme switching does not uninstall compositor settings.
 

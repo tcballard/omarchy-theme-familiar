@@ -1,6 +1,9 @@
 # Familiar: light workspace, Windows-inspired blue focus.
 mode = "light"
 accent = "#0067b8"
+# Opaque focus blue; inactive windows retain a quiet neutral outline.
+hyprland_active_border = "#0067b8"
+hyprland_inactive_border = "#aeb7c2"
 selection = "#cce4f7"
 muted = "#62666c"
 background = "#f5f6f8"

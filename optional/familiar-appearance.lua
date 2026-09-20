@@ -2,6 +2,7 @@
 -- Inspired by Marvin's separation of theme tokens and compositor settings.
 hl.config({
   general = {
+    border_size = 3,
     gaps_in = 8,
     gaps_out = 16,
   },

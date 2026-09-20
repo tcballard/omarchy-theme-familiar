@@ -49,7 +49,7 @@ This is not a Windows shell replacement: there are no added title-bar buttons, p
 
 The theme adds consistent 4/8px spacing, 36px control rows and quieter menu/control outlines. Blue selections and keyboard-focus indicators remain distinct.
 
-An independent part of the optional preset adds **12px rounded corners, gentle window shadows, 8px inner gaps and 16px outer gaps**. Quattro's shared shell surfaces follow Hyprland's corner radius. You can use this with or without the bottom-bar layout:
+An independent part of the optional preset adds **3px window borders, 12px rounded corners, gentle window shadows, 8px inner gaps and 16px outer gaps**. Familiar uses a solid blue active-window border and a muted grey inactive border, making focus clear even on the light wallpapers. Quattro's shared shell surfaces follow Hyprland's corner radius. You can use this with or without the bottom-bar layout:
 
 ```sh
 bash optional/familiar-preset appearance plan
@@ -62,6 +62,8 @@ bash optional/familiar-preset appearance restore
 Run from this checkout inside your Hyprland session. Requires Python 3, `hyprctl` and Quattro's `~/.config/hypr/hyprland.lua`; older `.conf` configurations are not modified. Apply installs `~/.config/hypr/familiar-appearance.lua` and appends a marked include to your existing configuration. Animation preferences, focus colours and bar placement are preserved.
 
 **Appearance stays active when switching themes until you restore it.** Layout and appearance have independent apply/restore commands. Restoration removes only the managed include and unedited appearance file, preserving other configuration edits. Conflicting edits cause refusal with the recovery snapshot location (`${XDG_STATE_HOME:-$HOME/.local/state}/familiar-appearance`). A failed reload retains that snapshot. See [the XPS verification steps](docs/APPEARANCE.md) before treating this as desktop-tested.
+
+If you already applied an earlier appearance preset, run `bash optional/familiar-preset appearance restore` and then `bash optional/familiar-preset appearance apply` after updating to install the new border width. Reapply the Familiar theme to regenerate its border colours.
 
 ## Status
 

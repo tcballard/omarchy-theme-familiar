@@ -45,10 +45,28 @@ Requires Quattro's running shell, Bash, jq and flock. The plan is read-only. App
 
 This is not a Windows shell replacement: there are no added title-bar buttons, pinned applications, minimize-to-taskbar, desktop icons or Windows snap behaviour. The menu remains Omarchy's menu, with normal Omarchy tiling and shortcuts. Application-provided window controls remain in use.
 
+## Softer appearance
+
+The theme adds consistent 4/8px spacing, 36px control rows and quieter menu/control outlines. Blue selections and keyboard-focus indicators remain distinct.
+
+An independent part of the optional preset adds **12px rounded corners, gentle window shadows, 8px inner gaps and 16px outer gaps**. Quattro's shared shell surfaces follow Hyprland's corner radius. You can use this with or without the bottom-bar layout:
+
+```sh
+bash optional/familiar-preset appearance plan
+bash optional/familiar-preset appearance apply
+hyprctl configerrors
+# Undo only the appearance settings:
+bash optional/familiar-preset appearance restore
+```
+
+Run from this checkout inside your Hyprland session. Requires Python 3, `hyprctl` and Quattro's `~/.config/hypr/hyprland.lua`; older `.conf` configurations are not modified. Apply installs `~/.config/hypr/familiar-appearance.lua` and appends a marked include to your existing configuration. Animation preferences, focus colours and bar placement are preserved.
+
+**Appearance stays active when switching themes until you restore it.** Layout and appearance have independent apply/restore commands. Restoration removes only the managed include and unedited appearance file, preserving other configuration edits. Conflicting edits cause refusal with the recovery snapshot location (`${XDG_STATE_HOME:-$HOME/.local/state}/familiar-appearance`). A failed reload retains that snapshot. See [the XPS verification steps](docs/APPEARANCE.md) before treating this as desktop-tested.
+
 ## Status
 
 Built against Quattro commit b679363bed05415771a1b1dc92c6899a908236f7. The correction audit reproduced TOML parsing, text contrast, all 19 retained upstream template-generation checks, all five section overrides, image decoding and isolated preset checks. The earlier Rust-helper and mocked-QML checks were not rerun in this audit. Live desktop, display scaling, compositor activation and registry validation remain unverified. See [validation evidence](docs/VALIDATION.md).
 
-Five complete shell-section overrides customise bar, font, controls, launcher and menu; revisit these when upstream adds section settings. Other applications derive colours through Omarchy's templates. User templates may take precedence.
+Six complete shell-section overrides customise bar, font, controls, launcher, menu and spacing; revisit these when upstream adds section settings. Other applications derive colours through Omarchy's templates. User templates may take precedence.
 
 Artwork provenance and official logo source: [CREDITS.md](CREDITS.md). No Microsoft wallpaper files are included. Not affiliated with Microsoft. This preview has not been submitted to the theme registry; no fabricated desktop screenshot is provided.

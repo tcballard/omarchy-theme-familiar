@@ -51,7 +51,7 @@ def main():
     if not config.is_file():
         fail("Quattro's ~/.config/hypr/hyprland.lua is required; legacy .conf files are not modified.")
     if args.mode == "plan":
-        print("Optional appearance: 3px window borders, 12px corners, 8px inner/16px outer gaps, gentle window shadows.")
+        print("Optional appearance: 5px window borders, 12px corners, 8px inner/16px outer gaps, gentle window shadows.")
         print(f"Append a marked include to {config}; install {target}.")
         print("Bar layout, colours, focus borders and animation preferences are preserved.")
         print("Applies across themes until restored. Existing snapshots or unmanaged includes block application.")

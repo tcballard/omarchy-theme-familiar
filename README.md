@@ -8,9 +8,9 @@
 
 A Windows-inspired light theme for Omarchy Quattro: clean application surfaces, a charcoal bar, blue selections and four original wallpapers with the official Omarchy logo.
 
-![Wallpaper collection — not a live desktop screenshot](docs/wallpapers.jpg)
+![Familiar desktop preview with four wallpaper variants](preview.png)
 
-Clockwise from top left: Blue Bloom, Pearl Silk, Aurora Tides and Violet Orbit. These change the wallpaper; the application palette remains the Familiar light theme.
+Clockwise from top left: Violet Orbit, Aurora Tides, Pearl Silk and Blue Bloom. Preview composited from desktop screenshots, with the surrounding backgrounds replaced by black. These change the wallpaper; the application palette remains the Familiar light theme.
 
 ## Install
 
@@ -71,4 +71,8 @@ Built against Quattro commit b679363bed05415771a1b1dc92c6899a908236f7. The corre
 
 Six complete shell-section overrides customise bar, font, controls, launcher, menu and spacing; revisit these when upstream adds section settings. Other applications derive colours through Omarchy's templates. User templates may take precedence.
 
-Artwork provenance and official logo source: [CREDITS.md](CREDITS.md). No Microsoft wallpaper files are included. Not affiliated with Microsoft. This preview has not been submitted to the theme registry; no fabricated desktop screenshot is provided.
+Artwork provenance and official logo source: [CREDITS.md](CREDITS.md). No Microsoft wallpaper files are included. Not affiliated with Microsoft. This preview has not been submitted to the theme registry; the preview is an AI-assisted composite, not an unedited desktop capture.
+
+## License
+
+[MIT](LICENSE) © 2026 Tom Ballard. Third-party artwork and logo attribution are documented in [CREDITS.md](CREDITS.md); their existing rights remain with their owners.

@@ -52,6 +52,32 @@ class AppearanceTests(unittest.TestCase):
         self.run_mode('apply')
         self.run_mode('restore')
 
+    def test_geometry_follows_selected_theme(self):
+        self.run_mode('apply')
+        theme = self.root / '.local/state/omarchy/current/theme.name'
+        theme.parent.mkdir(parents=True)
+        script = """
+local calls = 0
+hl = {config = function(config)
+    calls = calls + 1
+    assert(config.decoration.rounding == 12)
+    assert(config.general.border_size == 5)
+end}
+dofile(arg[1])
+assert(calls == tonumber(arg[2]))
+"""
+        # Repeated selections cover switching away and back; no file means no override.
+        for name in ('theme-familiar', 'catppuccin', 'theme-familiar', '', None):
+            with self.subTest(theme=name):
+                if name is None:
+                    theme.unlink()
+                else:
+                    theme.write_text(name + '\n')
+                result = subprocess.run(
+                    ['lua', '-', str(self.target), str(int(name == 'theme-familiar'))],
+                    input=script, env=self.env, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_preserves_later_edits(self):
         self.run_mode('apply')
         self.config.write_bytes(self.config.read_bytes() + b'-- later monitor settings\n')

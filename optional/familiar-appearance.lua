@@ -1,3 +1,10 @@
+-- Apply Familiar's geometry only while its theme is selected.
+-- Omarchy writes theme.name before reloading Hyprland on each theme switch.
+local theme_file = io.open(os.getenv("HOME") .. "/.local/state/omarchy/current/theme.name", "r")
+local theme_name = theme_file and theme_file:read("*l") or ""
+if theme_file then theme_file:close() end
+if theme_name ~= "theme-familiar" then return end
+
 -- Familiar's optional geometry. Colours and focus remain theme-owned.
 -- Inspired by Marvin's separation of theme tokens and compositor settings.
 hl.config({

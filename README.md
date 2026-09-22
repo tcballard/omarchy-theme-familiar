@@ -22,7 +22,7 @@ The installer applies Familiar immediately. Pick your favourite wallpaper with O
 
 The theme gives you light surfaces, blue selections and a clear active-window colour. The four wallpapers share the same application palette.
 
-There are also optional presets for a bottom bar with open-window buttons, and for rounded corners, shadows and thicker window borders. These are separate from the theme install and stay active until you restore them. See the [appearance guide](docs/APPEARANCE.md) and [preset commands](optional/familiar-preset).
+There are also optional presets for a bottom bar with open-window buttons, and for rounded corners, shadows and thicker window borders. These are separate from the theme install. The appearance preset now applies only while Familiar is selected; switching themes restores their normal geometry. The bottom-bar layout stays active until you restore it. Existing appearance-preset users should follow the upgrade steps in the appearance guide. See the [appearance guide](docs/APPEARANCE.md) and [preset commands](optional/familiar-preset).
 
 Found something hard to read or out of place? [Open an issue](https://github.com/tcballard/omarchy-theme-familiar/issues) with a screenshot.
 

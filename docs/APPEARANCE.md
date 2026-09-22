@@ -6,7 +6,7 @@ This pass adopts a restrained version of Marvin's rounded, softly raised surface
 
 Focus refinement: the appearance preset now explicitly sets a 5px window border. Theme palette keys `hyprland_active_border` and `hyprland_inactive_border` select opaque Familiar blue (`#0067b8`) and muted grey (`#aeb7c2`). Quattro's generated Hyprland template uses these for ordinary and grouped windows. Previously applied appearance presets must be restored and reapplied to receive the width change. Border colours follow the selected theme; the width remains part of the optional preset.
 
-`shell.spacing.toml` and the existing menu, launcher and control sections contain theme-owned settings. `optional/familiar-appearance.lua` contains compositor geometry. `familiar-preset appearance` manages that file separately from the existing bar preset. Theme switching does not uninstall compositor settings.
+`shell.spacing.toml` and the existing menu, launcher and control sections contain theme-owned settings. `optional/familiar-appearance.lua` contains compositor geometry. `familiar-preset appearance` manages that file separately from the existing bar preset. The installed geometry file checks Omarchy’s current theme name on every Hyprland reload. It applies only for `theme-familiar` (the name produced by the documented install command). Switching away leaves the file installed but skips its settings, allowing the selected theme and normal Hyprland configuration to take effect. The optional bottom-bar layout remains independent.
 
 Source reference: Omarchy Quattro `e38c1d1289252d2adb96372eeac48d02e489c5b7`, specifically `default/themed/shell.toml.tpl`, `default/hypr/looknfeel.lua`, `config/hypr/hyprland.lua` and `shell/Commons/Style.qml`. The shell's `cornerRadius` reads `decoration:rounding`; explicit spacing tokens pin logical sizes while compositor display scaling continues to apply. Large custom font sizes need visual checking because pinned rows do not automatically grow with the font.
 
@@ -40,6 +40,20 @@ Stop if there are local edits; preserve them before switching. If the theme is i
 4. Navigate controls using Tab and the keyboard cursor. Blue focus must remain distinguishable from hover and selection.
 5. Inspect lock screen, terminal, editor and a GTK app. Confirm readable light-theme text, especially plugin popups previously checked on the XPS.
 6. Repeat at the XPS's normal fractional scale and with any custom font size. Check long menu items and searchable dropdowns.
-7. Switch themes and verify that the optional geometry remains active as documented. Restore appearance, confirm the previous geometry returns, and check `hyprctl configerrors` again. The bottom bar must remain where it was.
+7. Switch to another theme and verify Familiar’s geometry stops applying; switch back to Familiar and verify it returns. Restore appearance, confirm the previous geometry returns, and check `hyprctl configerrors` again. The bottom bar must remain where it was.
 
 Live XPS/compositor rendering and these new spacing values are **not yet verified**. Repository README/validation notes predate the user's later desktop checks; this document makes no claim about their results or the separate popup fix.
+
+## Upgrade an existing appearance preset
+
+Updating the theme checkout does not replace the appearance file previously copied into `~/.config/hypr/`. After updating, run these commands once inside your Hyprland session:
+
+```sh
+cd "$HOME/.config/omarchy/themes/theme-familiar"
+bash optional/familiar-preset appearance restore && bash optional/familiar-preset appearance apply
+hyprctl configerrors
+```
+
+Restoration preserves unrelated configuration edits and refuses to overwrite a manually edited appearance file. If it reports a conflict, resolve it using the recovery snapshot it names before reapplying. New users can run `bash optional/familiar-preset appearance apply` directly.
+
+The preset reads `~/.local/state/omarchy/current/theme.name`, matching Omarchy’s theme command, and expects the installed theme name `theme-familiar`. If you deliberately rename the theme, adjust the name comparison in the appearance file as well.

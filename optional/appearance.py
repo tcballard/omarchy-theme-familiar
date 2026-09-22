@@ -54,7 +54,7 @@ def main():
         print("Optional appearance: 5px window borders, 12px corners, 8px inner/16px outer gaps, gentle window shadows.")
         print(f"Append a marked include to {config}; install {target}.")
         print("Bar layout, colours, focus borders and animation preferences are preserved.")
-        print("Applies across themes until restored. Existing snapshots or unmanaged includes block application.")
+        print("Applies only while the theme-familiar theme is selected. Existing snapshots or unmanaged includes block application.")
         print((BASE / "familiar-appearance.lua").read_text())
         return
     if not shutil.which("hyprctl"):

@@ -1,16 +1,16 @@
-# Familiar
+<h1 align="center">Familiar</h1>
 
-[![Built for Omarchy: Theme](https://raw.githubusercontent.com/tcballard/omarchy-badges/75975e5b5bf75e7ede3764bcd2950046f7abfe2c/badges/v1/omarchy-theme.svg)](https://github.com/tcballard/omarchy-badges)
+<p align="center"><strong>A little Windows familiarity for your Omarchy desktop.</strong></p>
 
-**A little Windows familiarity for your Omarchy desktop.**
+<p align="center">
+  <a href="https://github.com/tcballard/omarchy-badges"><img src="https://raw.githubusercontent.com/tcballard/omarchy-badges/75975e5b5bf75e7ede3764bcd2950046f7abfe2c/badges/v1/omarchy-theme.svg" alt="Built for Omarchy: Theme"></a>
+</p>
 
-Familiar brings a light palette, a charcoal bar and clear blue accents to Omarchy Quattro. Four wallpapers give it a different mood, from a blue folded bloom to purple glass, green waves and flowing white silk.
-
-Built and tested on my Dell XPS running Omarchy. The preview below brings together screenshots from that machine.
+Familiar is a light theme for Omarchy Quattro with a charcoal bar, blue accents and four wallpaper choices. It brings a familiar desktop feel while keeping Omarchy's theme picker and background picker in control.
 
 ![Familiar on a Dell XPS, showing its four wallpaper variants](preview.png)
 
-## Try it
+Install it from the [Omarchy theme storefront](https://themes.omarchy.org/) or run:
 
 ```sh
 omarchy theme install https://github.com/tcballard/omarchy-theme-familiar
@@ -28,7 +28,7 @@ Found something hard to read or out of place? [Open an issue](https://github.com
 
 ## Marketplace
 
-[Submitted to the Omarchy Theme Registry](https://github.com/omacom/omarchy-theme-registry/issues/44). Registry validation has passed; the listing is awaiting maintainer approval.
+[Familiar is published in the Omarchy Theme Registry](https://github.com/omacom/omarchy-theme-registry/issues/44).
 
 ## Credits and licence
 

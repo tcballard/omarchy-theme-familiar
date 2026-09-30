@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "titlebars": {
+    "enabled": true,
+    "style": "windows",
+    "height": 36,
+    "fontSize": 15,
+    "textAlign": "center",
+    "buttonSize": 18,
+    "edgePadding": 10,
+    "buttonPadding": 9,
+    "buttonForeground": "#ffffff",
+    "closeColour": "#b42318",
+    "minimizeColour": "#62666c",
+    "maximizeColour": "#0067b8",
+    "exclusions": []
+  }
+}

@@ -22,6 +22,16 @@ The installer applies Familiar immediately. Pick your favourite wallpaper with O
 
 The theme gives you light surfaces, blue selections and a clear active-window colour. The four wallpapers share the same application palette.
 
+With the optional [Familiar Desktop plugin](https://github.com/tcballard/omarchy-plugin-familiar-desktop)
+and its title-bar integration installed, choose **Window controls → Theme** in
+the plugin's settings. Familiar then supplies Windows-style close, minimise and
+maximise buttons, sizing and colours through `familiar-desktop.json`. Background,
+text and font family inherit the active shell theme. Switching themes follows
+the next theme's title-bar preferences; themes without this file turn controls
+off in Theme mode. Explicit Off/Mac/Windows choices override theme enablement
+and layout. This requires the plugin version with theme-controlled title bars;
+the existing screenshot predates that feature and desktop tuning is pending.
+
 There are also optional presets for a bottom bar with open-window buttons, and for rounded corners, shadows and thicker window borders. These are separate from the theme install. The appearance preset now applies only while Familiar is selected; switching themes restores their normal geometry. The bottom-bar layout stays active until you restore it. Existing appearance-preset users should follow the upgrade steps in the appearance guide. See the [appearance guide](docs/APPEARANCE.md) and [preset commands](optional/familiar-preset).
 
 Found something hard to read or out of place? [Open an issue](https://github.com/tcballard/omarchy-theme-familiar/issues) with a screenshot.

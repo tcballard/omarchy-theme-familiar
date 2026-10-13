@@ -1,0 +1,11 @@
+# Joined shell headers; requires the shell's opt-in panel-header support.
+# Complete section because shell.<section>.toml replaces the generated section.
+[popups]
+background = "#f5f6f8"
+background-alpha = 1.0
+text = "#202124"
+border = "hyprland.active-border"
+border-alpha = 1.0
+header-style = "joined"
+header-background = "#e9edf2"
+header-background-alpha = 1.0

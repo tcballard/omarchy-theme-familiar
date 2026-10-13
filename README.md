@@ -20,7 +20,9 @@ The installer applies Familiar immediately. Pick your favourite wallpaper with O
 
 ## Make yourself at home
 
-The theme gives you light surfaces, blue selections and a clear active-window colour. The four wallpapers share the same application palette.
+The theme gives you light surfaces, blue selections and a clear active-window colour.
+
+On shells with joined-panel-header support, Familiar's light grey panel headers flow into the outer outline and follow its top corners. Older shells retain their existing panel appearance. See [shell header compatibility and testing](docs/SHELL-HEADERS.md). The four wallpapers share the same application palette.
 
 With the optional [Familiar Desktop plugin](https://github.com/tcballard/omarchy-plugin-familiar-desktop)
 and its title-bar integration installed, choose **Window controls → Theme** in
